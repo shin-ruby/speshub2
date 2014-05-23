@@ -1,0 +1,98 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @space.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @space.content %>
+</p>
+
+<p>
+  <strong>Space setting:</strong>
+  <%= @space.space_setting_id %>
+</p>
+
+<p>
+  <strong>User group:</strong>
+  <%= @space.user_group_id %>
+</p>
+
+<p>
+  <strong>Atmosphere:</strong>
+  <%= @space.atmosphere_id %>
+</p>
+
+<p>
+  <strong>Rent_env:</strong>
+  <%= @space.rent_envs.map(&:content).join(",") %>
+</p>
+
+<p>
+  <strong>People:</strong>
+  <%= @space.num_of_people_id %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @space.city_id %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @space.address %>
+</p>
+
+<p>
+  <strong>Price hour:</strong>
+  <%= @space.price_hour %>
+</p>
+
+<p>
+  <strong>Price day:</strong>
+  <%= @space.price_day %>
+</p>
+
+<p>
+  <strong>Price month:</strong>
+  <%= @space.price_month %>
+</p>
+
+<p>
+  <strong>Price year:</strong>
+  <%= @space.price_year %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <% @space_photo.map do |i| %>
+    <%= image_tag i.data %>
+  <% end %>
+</p>
+
+<hr />
+
+<h2>Comments</h2>
+<% @space.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+<% end %>
+
+<h4>Add a comment:</h4>
+<%= simple_form_for([@space, @space.comments.build]) do |f| %>
+  <p>
+    <%= f.input :commenter, as: :text %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_space_path(@space) %> |
+<%= link_to 'Back', spaces_path %>

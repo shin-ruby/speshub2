@@ -7,6 +7,7 @@ gem 'rails', '4.1.0'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.11.0'
+  gem 'annotate', ">=2.6.0"
 end
 
 group :test do
@@ -14,7 +15,7 @@ group :test do
 end
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '>= 3.2'
 gem 'bootstrap-sass', '~> 3.1.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -36,6 +37,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'devise'
+gem 'simple_form'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

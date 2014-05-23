@@ -1,0 +1,42 @@
+<h1>Editing space</h1>
+
+<%= simple_form_for(@space, html: {:multipart => true, class: 'form-horizontal' }) do |f| %>
+
+  <%= f.association :space_setting, label_method: :content, include_blank: false %>
+  <%= f.association :user_group, label_method: :content, include_blank: false %>
+  <%= f.association :atmosphere, label_method: :content, include_blank: false %>
+
+  <%= f.association :rent_envs, label_method: :content, as: :check_boxes %>
+
+  <%= f.association :num_of_people, label_method: :content, include_blank: false %>
+  <%= f.association :city, label_method: :content, include_blank: false %>
+  <%= f.input :address %>
+  <hr />
+
+  <%= f.input :price_hour %>
+  <%= f.input :price_day %>
+  <%= f.input :price_month %>
+  <%= f.input :price_year %>
+  <hr />
+
+  <%= f.input :title %>
+  <%= f.input :content, as: :text %>
+  <hr />
+
+  <%= f.simple_fields_for :photos, Photo.new do |i|%>
+    <%= i.label :data %>
+    <%= i.file_field :data %>
+  <% end %>
+  <hr />
+
+  <%= f.association :detaileds, label_method: :content, as: :check_boxes %>
+
+
+  <br>
+  <%= f.button :submit %>
+
+<% end %>
+
+
+<%= link_to 'Show', @space %> |
+<%= link_to 'Back', spaces_path %>
