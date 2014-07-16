@@ -5,12 +5,11 @@
 #  id               :integer          not null, primary key
 #  title            :string(255)
 #  content          :text
-#  price_hour       :decimal(, )
-#  price_day        :decimal(, )
-#  price_month      :decimal(, )
-#  price_year       :decimal(, )
+#  price_hour       :decimal(8, 2)
+#  price_day        :decimal(8, 2)
+#  price_month      :decimal(8, 2)
+#  price_year       :decimal(8, 2)
 #  space_setting_id :integer
-#  user_group_id    :integer
 #  city_id          :integer
 #  atmosphere_id    :integer
 #  created_at       :datetime
@@ -18,6 +17,7 @@
 #  num_of_people_id :integer
 #  address          :string(255)
 #  user_id          :integer
+#  token            :string(255)
 #
 
 require 'spec_helper'

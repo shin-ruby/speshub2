@@ -1,0 +1,51 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to '首页', root_path %></li>
+        <li><%= link_to '寻找好的办公空间', spaces_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-centre">
+        <%= link_to image_tag("logo.png"), root_path, class: "navbar-brand" %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li>
+            <% if current_user_info.nil? %>
+              <%= image_tag "user_pic.jpg", class: "user-photo" %>
+            <% else %>
+              <%= image_tag current_user_info.avatar.url(:thumb), class: "user-photo" %>
+            <% end %>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= current_user.email %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% if current_user_info.nil? %>
+                <li><%= link_to "个人中心", new_user_info_path %></li>
+              <% else %>
+                <li><%= link_to "个人中心", user_info_path(current_user_info.id) %></li>
+              <% end %>
+              <li class="divider"></li>
+              <li><%= link_to "修改密码", edit_user_registration_path %></li>
+              <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
+        <li><%= link_to '发布办公空间', new_space_path %></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-4 user-info-show-left">
+    <% if @user_info.avatar_file_name.empty? %>
+      <%= image_tag "user_pic.jpg", class: "user-photo" %>
+    <% else %>
+      <%= image_tag @user_info.avatar.url(:medium) %>
+    <% end %>
+    <h4><%= @user_info.name %></h4>
+    <h5><small>电话：</small><%= @user_info.phone %></h5>
+    <h5><small>邮箱：</small><%= User.find_by(id: @user_info.user_id).email %></h5>
+    <h5><small>创建时间：</small><%= User.find_by(id: @user_info.user_id).created_at %></h5>
+    <h5><small>个人签名：</small></h5><p class="text-lowercase">我是一名程序员</p>
+    <h5><small>个人介绍：</small></h5><p class="text-lowercase">Speshub创始人Speshub创始人Speshub创始人</p>
+    <%= link_to '更新信息', edit_user_info_path(@user_info) %> |
+    <%= link_to 'Back', user_infos_path %>
+
+  </div>
+  <div class="col-md-8 user-info-show">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active"><a href="#home" role="tab" data-toggle="tab">发布的办公空间</a></li>
+      <li><a href="#profile" role="tab" data-toggle="tab">最近回帖</a></li>
+      <li><a href="#messages" role="tab" data-toggle="tab">站内短信</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">
+        <% Space.where(user_id: @user_info.user_id).each do |s| %>
+          <%= image_tag s.photos.first.data.url(:thumb) %>
+            <%= link_to s.title, space_path(s) %> | <%= link_to '修改', edit_space_path(s) %>
+          <hr />
+          <!--代码应该有问题，不是current_user-->
+        <% end %>
+      </div>
+      <div class="tab-pane" id="profile">
+        <% Comment.where(user_id: @user_info.user_id).each do |c| %>
+          <%= c.commenter %><hr />
+        <% end %>
+      </div>
+      <div class="tab-pane" id="messages">
+        123
+        <hr />
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

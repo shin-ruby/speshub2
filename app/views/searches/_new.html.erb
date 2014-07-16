@@ -1,0 +1,35 @@
+<%= simple_form_for @search,
+                    wrapper_mappings: {
+                            check_boxes: :vertical_radio_and_checkboxes,
+                            radio_buttons: :vertical_radio_and_checkboxes,
+                            file: :vertical_file_input,
+                            boolean: :vertical_boolean
+                    } do |f| %>
+  <!--<div class="field">-->
+    <!--<%#= f.input :title %>-->
+  <!--</div>-->
+  <div class="field">
+    <%= f.input :city_id, label: '城市', collection: City.order(:content), label_method: :content,  prompt: '请选择城市', input_html: { class: 'input-sm' } %>
+  </div>
+  <div class="field">
+    <%= f.input :space_setting_id, label: '办公空间类型', collection: SpaceSetting.order(:content),
+                label_method: :content, as: :radio_buttons, hint: 'Yes, remember me' %>
+  </div>
+  <!--<div class="field">-->
+    <!--<%#= f.input :user_group_id, collection: UserGroup.order(:content), label_method: :content %>-->
+  <!--</div>-->
+
+  <!--<div class="field">-->
+    <!--<%#= f.input :rent_env_id, collection: RentEnv.order(:content), label_method: :content %>-->
+  <!--</div>-->
+  <div class="field">
+    <%= f.input :atmosphere_id, label: '办公空间氛围', collection: Atmosphere.order(:content), label_method: :content, as: :radio_buttons %>
+  </div>
+  <div class="field">
+    <%#= f.input :min_price, size: 10 %>
+    <%= f.input :max_price, size: 10, label: '每月租金不高于', input_html: { class: 'input-sm' } %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit, "搜索", class: "btn btn-primary" %>
+  </div>
+<% end %>

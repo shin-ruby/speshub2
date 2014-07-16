@@ -1,8 +1,88 @@
-<div class="jumbotron">
-  <h1>Navbar example</h1>
-  <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-  <p>To see the difference between static and fixed top navbars, just scroll.</p>
-  <p>
-    <%= link_to 'Show Spaces', spaces_path, class: "btn btn-lg btn-primary" %>
-  </p>
+<%= render "layouts/banner" %>
+<div class="container banner-category">
+  <h2 class="text-center slogan">这里为您提供高效和专注的工作环境</h2>
+  <div class="row">
+    <div class="col-md-4 banner-category-small">
+      <img src="/assets/design.jpg" alt="..." class="img-thumbnail">
+    </div>
+    <div class="col-md-4">
+      <img src="/assets/talk.jpg" alt="..." class="img-thumbnail">
+    </div>
+    <div class="col-md-4">
+      <img src="/assets/quiet.jpg" alt="..." class="img-thumbnail">
+    </div>
+  </div>
+  <br /><br />
+  <div class="row">
+    <div class="col-md-4">
+      <img src="/assets/music.jpg" alt="..." class="img-thumbnail">
+    </div>
+    <div class="col-md-4">
+      <img src="/assets/event.jpg" alt="..." class="img-thumbnail">
+    </div>
+    <div class="col-md-4">
+      <img src="/assets/zone.jpg" alt="..." class="img-thumbnail">
+    </div>
+  </div>
+</div> <!-- /container -->
+
+<div class="second-subject">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="glyphicon glyphicon-send"></span>
+        <h4><strong>创业者</strong></h4>
+        <p>无论你现实是一名创业者，还是自由职业人，寻找办公空间就应该是这么简单。</p>
+        <p><a class="btn btn-info" href="#">寻找适合你的工作环境 &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <span class="glyphicon glyphicon-fire"></span>
+        <h4><strong>出租</strong></h4>
+        <p>将办公空间合理出租，选择适合的入驻用户，打造一个有文化的环境。 </p>
+        <p><a class="btn btn-info" href="#">了解更多出租事宜 &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <span class="glyphicon glyphicon-leaf"></span>
+        <h4><strong>活动</strong></h4>
+        <p>本期主题─《创业公司的后端实践》2014年9月25日晚上7点半，上海五角场创智天地.</p>
+        <p><a class="btn btn-info" href="#">了解活动 &raquo;</a></p>
+      </div>
+    </div>
+  </div><!--end container -->
+</div><!--end second-subject -->
+
+<div class="third-subject">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-3 recommend">
+            <img src="/assets/MarkZuckerberg.jpg" />
+          </div>
+          <div class="col-md-9">
+            <blockquote>
+              <p>The website is cool!</p>
+              <small>Fackbook <cite title="Source Title">CEO</cite></small>
+            </blockquote>
+          </div>
+        </div>
+      </div><!-- col-md-6 -->
+
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-3 recommend">
+            <img src="/assets/MarissaMayer.jpg" />
+          </div>
+          <div class="col-md-9">
+            <blockquote>
+              <p>SpesHub is amazing! Very useful and easy.</p>
+              <small>Yahoo! <cite title="Source Title">CEO</cite></small>
+            </blockquote>
+          </div>
+        </div>
+      </div><!-- col-md-6 -->
+    </div>
+  </div>
+</div>
 </div>

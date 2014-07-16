@@ -1,47 +1,194 @@
-<h1 class="page-header">New space</h1>
+<div class="row spaces_new">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= simple_form_for @space, html: { :multipart => true, class: 'form-horizontal' },
+          wrapper: :horizontal_form,
+          wrapper_mappings: {
+                  check_boxes: :horizontal_radio_and_checkboxes,
+                  radio_buttons: :horizontal_radio_and_checkboxes,
+                  file: :horizontal_file_input,
+                  boolean: :horizontal_boolean
+          } do |f| %>
+          <%= f.input :token, as: :hidden, value: @space.token %>
+          <%= f.error_notification %>
+          <div class="page-header page-header-one">
+            <h4><span class="glyphicon glyphicon-home"></span>  基本信息 <small>第一步／六步</small></h4>
+          </div>
+          <%= f.association :space_setting, label: '空间类型', label_method: :content, include_blank: false, input_html: {style: 'width: 200px'},
+                            hint: '*根据您楼宇类型选择' %>
+          <%= f.association :user_groups, label: '入驻群体', label_method: :content, as: :check_boxes, hint: '*您希望选择客户工作类型或打造氛围' %>
+          <%= f.association :atmosphere, label: '空间环境', label_method: :content, include_blank: false, input_html: {style: 'width: 200px'},
+                            hint: '*目前的空间氛围'%>
+          <%= f.association :rent_envs, label: '入驻形式', label_method: :content, as: :check_boxes %>
+          <%= f.association :num_of_people, label: '可入驻人数', label_method: :content, include_blank: false, input_html: {style: 'width: 200px'} %>
+          <div class="page-header">
+            <h4><span class="glyphicon glyphicon-map-marker"></span>  地址信息 <small>第三步／六步</small></h4>
+          </div>
+          <%= f.association :city, label: '城市', label_method: :content, include_blank: false, input_html: {style: 'width: 200px'} %>
+          <%= f.input :address, label: '地址', input_html: {style: 'width: 200px'} %>
 
-<div class="row">
-  <div class="col-md-4">
+          <%#= link_to "上传图片", new_photo_path(:param1 => @space.token) %>
+          <%# Photo.where(space_token: @space.token).each do |i| %>
+            <%#= i.data_file_name %>
+          <%# end %>
 
-    <%= simple_form_for(@space, html: {:multipart => true, class: 'form-horizontal' }) do |f| %>
-
-      <%= f.association :space_setting, label_method: :content, include_blank: false %>
-      <%= f.association :user_group, label_method: :content, include_blank: false %>
-      <%= f.association :atmosphere, label_method: :content, include_blank: false %>
-
-      <%= f.association :rent_envs, label_method: :content, as: :check_boxes %>
-
-      <%= f.association :num_of_people, label_method: :content, include_blank: false %>
-      <%= f.association :city, label_method: :content, include_blank: false %>
-      <%= f.input :address %>
-      <hr />
-
-      <%= f.input :price_hour %>
-      <%= f.input :price_day %>
-      <%= f.input :price_month %>
-      <%= f.input :price_year %>
-      <hr />
-
-      <%= f.input :title %>
-      <%= f.input :content, as: :text %>
-      <hr />
-
-      <%= f.simple_fields_for :photos, Photo.new do |i|%>
-        <%= i.label :data %>
-        <%= i.file_field :data %>
-      <% end %>
-      <hr />
-
-      <%= f.association :detaileds, label_method: :content, as: :check_boxes %>
-
-
-      <br>
-      <%= f.button :submit %>
-
-    <% end %>
-
-    <%= link_to 'Back', spaces_path %>
+          <div class="page-header">
+            <h4><span class="glyphicon glyphicon-usd"></span>  价格 <small>第四步／六步</small></h4>
+          </div>
+          <%= f.input :price_hour, label: '小时／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'} %>
+          <%= f.input :price_day, label: '每日／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'} %>
+          <%= f.input :price_month, label: '每月／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'} %>
+          <%= f.input :price_year, label: '全年／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'} %>
+          <div class="page-header">
+            <h4><span class="glyphicon glyphicon-pencil"></span>  办公空间简介 <small>第五步／六步</small></h4>
+          </div>
+          <%= f.input :title, label: '标题', placeholder: '办公空间的名称，如：某某创业园区',  wrapper_html: { class: 'form-horizontal' } %>
+          <%= f.input :content, label: '介绍', placeholder: '撰写300字以内的办公环球介绍', as: :text, :input_html => { :rows => 10 }, wrapper_html: { class: 'form-horizontal' } %>
+          <div class="page-header">
+            <h4><span class="glyphicon glyphicon-th-list"></span>  便利设施 <small>第六步／六步</small></h4>
+          </div>
+          <%= f.association :detaileds, label: '便利设施', label_method: :content, as: :check_boxes, wrapper_html: { class: 'form-horizontal' }, hint: '*办公空间具备的设施' %>
+          <%= f.error :base, wrapper_html: { class: 'form-horizontal' } %>
+          <%= f.button :submit, "提交信息", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-8">.col-md-8</div>
-</div>
+  <div class="row spaces_new_right">
+    <div class="col-md-4">
+      <div class="page-header">
+        <h4><span class="glyphicon glyphicon-picture"></span>  上传照片 <small>第二步／六步</small></h4>
+      </div>
+      <%= form_for Photo.new, :html => { :multipart => true, :id => "fileupload" } do |i|%>
+        <%= i.hidden_field :space_token, value: @space.token %>
+        <h4 class="text-left"><%= i.label '上传一些空间环境照片' %></h4>
+        <p class="help-block">*可选择多张图片上传，图片格式为jpg</p>
+        <div class="row fileupload-buttonbar">
+          <div class="col-md-12">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+            <span class="btn btn-success fileinput-button">
+              <i class="icon-plus icon-white"></i>
+              <span>添加照片...</span>
+              <%= i.file_field :data %>
+            </span>
+            <button type="submit" class="btn btn-primary start">
+              <i class="icon-upload icon-white"></i>
+              <span>开始上传</span>
+            </button>
+            <button type="reset" class="btn btn-warning cancel">
+              <i class="icon-ban-circle icon-white"></i>
+              <span>取消上传</span>
+            </button>
+            <button type="button" class="btn btn-danger delete">
+              <i class="icon-trash icon-white"></i>
+              <span>删除</span>
+            </button>
+              <!-- <input type="checkbox" class="toggle"> -->
+          </div>
+          <div class="col-md-12">
+            <!-- The global progress bar -->
+            <div class="progress progress-success progress-striped active fade">
+              <div class="bar" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+        <!-- The loading indicator is shown during image processing -->
+        <div class="fileupload-loading"></div>
+        <br>
+        <!-- The table listing the files available for upload/download -->
+        <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div><!-- row -->
+
+<script>
+  var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+  };
+</script>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  <tr class="template-upload fade">
+    <td class="preview"><span class="fade"></span></td>
+    <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+    {% if (file.error) { %}
+    <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+    {% } else if (o.files.valid && !i) { %}
+    <td>
+      <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+    </td>
+    <td class="start">{% if (!o.options.autoUpload) { %}
+      <button class="btn btn-primary">
+        <i class="icon-upload icon-white"></i>
+        <span>上传</span>
+      </button>
+      {% } %}</td>
+    {% } else { %}
+    <td colspan="2"></td>
+    {% } %}
+    <td class="cancel">{% if (!i) { %}
+      <button class="btn btn-warning">
+        <i class="icon-ban-circle icon-white"></i>
+        <span>取消</span>
+      </button>
+      {% } %}</td>
+  </tr>
+  {% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+      {% if (file.error) { %}
+        <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else { %}
+        <td class="preview">
+          <img src="{%=file.url%}" class="img-update">
+        </td>
+        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+        <td colspan="2"></td>
+        {% } %}
+      <td class="delete">
+        <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
+          <i class="icon-trash icon-white"></i>
+          <span>删除</span>
+        </button>
+        <input type="checkbox" name="delete" value="1">
+      </td>
+    </tr>
+    {% } %}
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    // Initialize the jQuery File Upload widget:
+    $('#fileupload').fileupload();
+    //
+    // Load existing files:
+    $.getJSON($('#fileupload').prop('action'), function (files) {
+      var fu = $('#fileupload').data('blueimpFileupload'),
+              template;
+      fu._adjustMaxNumberOfFiles(-files.length);
+      console.log(files);
+      template = fu._renderDownload(files)
+              .appendTo($('#fileupload .files'));
+      // Force reflow:
+      fu._reflow = fu._transition && template.length &&
+              template[0].offsetWidth;
+      template.addClass('in');
+      $('#loading').remove();
+    });
+
+  });
+</script>

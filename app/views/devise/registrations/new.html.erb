@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default sign">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">帐户注册</h3>
+      </div>
+      <div class="panel-body">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :email, label: '邮件地址', required: true, autofocus: true %>
+            <%= f.input :password, label: '密码', required: true %>
+            <%= f.input :password_confirmation, label: '确认密码', required: true %>
+          </div>
+
+          <div class="form-actions">
+            <p>点击注册，表示您同意我们的<%= link_to '服务条款', '#' %>和<%= link_to '隐私政策', '#' %>。</p>
+            <%= f.button :submit, "注册", class: "btn btn-primary" %>
+          </div>
+          <hr />
+          已经有一个帐户？<%= render "devise/shared/links" %>
+        <% end %>
+      </div>
+    </div>
+</div>
+</div>

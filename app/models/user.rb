@@ -24,9 +24,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :spaces, dependent: :destroy
-
   has_many :comments, dependent: :destroy
-  has_many :spaces, through: :comments
+  has_one :user_info
 end
 
 #user.spaces

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sms:</strong>
+  <%= @message.sms %>
+</p>
+
+<p>
+  <strong>Send:</strong>
+  <%= @message.send_id %>
+</p>
+
+<p>
+  <strong>Accept:</strong>
+  <%= @message.accept_id %>
+</p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @message.space_id %>
+</p>
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

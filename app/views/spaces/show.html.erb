@@ -1,98 +1,335 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @space.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @space.content %>
-</p>
-
-<p>
-  <strong>Space setting:</strong>
-  <%= @space.space_setting_id %>
-</p>
-
-<p>
-  <strong>User group:</strong>
-  <%= @space.user_group_id %>
-</p>
-
-<p>
-  <strong>Atmosphere:</strong>
-  <%= @space.atmosphere_id %>
-</p>
-
-<p>
-  <strong>Rent_env:</strong>
-  <%= @space.rent_envs.map(&:content).join(",") %>
-</p>
-
-<p>
-  <strong>People:</strong>
-  <%= @space.num_of_people_id %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @space.city_id %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @space.address %>
-</p>
-
-<p>
-  <strong>Price hour:</strong>
-  <%= @space.price_hour %>
-</p>
-
-<p>
-  <strong>Price day:</strong>
-  <%= @space.price_day %>
-</p>
-
-<p>
-  <strong>Price month:</strong>
-  <%= @space.price_month %>
-</p>
-
-<p>
-  <strong>Price year:</strong>
-  <%= @space.price_year %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <% @space_photo.map do |i| %>
-    <%= image_tag i.data %>
+<div class="row">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> alert-dismissible col-md-8" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <%= value %>
+    </div>
   <% end %>
-</p>
+<div class="col-md-8">
+  <h3><%= @space.title %></h3>
 
-<hr />
+  <div class="row">
+    <div class="col-md-12">
+      <div class="thumbnail">
 
-<h2>Comments</h2>
-<% @space.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <div class="carousel-inner">
+            <% if @space_photo.empty? %>
+              <%= image_tag "no-space-img.jpg" %>
+              <% else %>
+                <% @space_photo.each_with_index do |i, index| %>
+                  <div class="item <%= "active" if index == 0 %>">
+                    <%= image_tag i.data.url(:medium) %>
+                  </div>
+                <% end %>
+            <% end %>
+          </div>
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div><!-- /.carousel -->
+        <div class="caption">
+          <address>
+            <strong><%= @space.title %></strong><br>
+            <%= @space.city.content %>
+            -
+            <%= @space.address %><br>
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -->
+  <div class="bs-tabs">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">描述</a></li>
+      <li><a href="#profile" data-toggle="tab">设施</a></li>
+      <li><a href="#messages" data-toggle="tab">地址</a></li>
+    </ul>
 
-<% end %>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">
+        <p><%= @space.content %></p>
+      </div>
+      <div class="tab-pane" id="profile">
+        <div class="row">
+          <div class="col-md-10">
 
-<h4>Add a comment:</h4>
-<%= simple_form_for([@space, @space.comments.build]) do |f| %>
-  <p>
-    <%= f.input :commenter, as: :text %>
-  </p>
+            <% @space_detailed.each do |i| %>
+              <button type="button" class="btn btn-info btn-xs detailed-frame"><%= @detailed.find_by(id: i.detailed_id).content %></button>
+            <% end %>
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+              <%# @detailed.each do |d| %>
+              <%#= d.content %>
+              <!--<li><span class="glyphicon glyphicon-ok"></span>可吸烟</li>-->
+              <!--<li><span class="glyphicon glyphicon-remove"></span>可携带宠物</li>-->
+              <%# end %>
+          </div>
+
+        </div>
+      </div>
+      <div class="tab-pane" id="messages">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Header</th>
+            <th>Header</th>
+            <th>Header</th>
+            <th>Header</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1,001</td>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+            <td>sit</td>
+          </tr>
+          <tr>
+            <td>1,002</td>
+            <td>amet</td>
+            <td>consectetur</td>
+            <td>adipiscing</td>
+            <td>elit</td>
+          </tr>
+          <tr>
+            <td>1,003</td>
+            <td>Integer</td>
+            <td>nec</td>
+            <td>odio</td>
+            <td>Praesent</td>
+          </tr>
+          <tr>
+            <td>1,003</td>
+            <td>libero</td>
+            <td>Sed</td>
+            <td>cursus</td>
+            <td>ante</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div><!-- bs-tabs -->
+  <!-- -->
+  <br />
+  <!-- -->
+  <div class="bs-tabs">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">评论</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">
+
+        <% @space.comments.each do |comment| %>
+          <div class="media">
+            <div class="row">
+              <div class="col-md-1">
+                <a class="pull-left" href="#">
+                  <%= image_tag comment_user_info(comment).avatar.url(:thumb), class: 'media-object' %>
+                  <p class="comment-name"><%= link_to comment_user_info(comment).name, user_info_path(comment_user_info(comment).id) %></p>
+                </a>
+              </div>
+              <div class="col-md-10">
+                <div class="media-body">
+                  <p><%= comment.commenter %></p>
+                  <small><%= comment.updated_at %></small>
+                </div>
+              </div>
+            </div>
+          </div><!-- media -->
+        <% end %>
+        <ul class="pagination">
+          <li><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+
+        <%= simple_form_for([@space, @space.comments.build]) do |f| %>
+          <% if user_signed_in? %>
+            <p>
+              <%= f.input :commenter, label: '我要评论', as: :text %>
+            </p>
+            <p>
+              <%= f.button :submit, '提交' %>
+            </p>
+          <% else %>
+            <fieldset disabled>
+              <p>
+                <%= f.input :commenter, as: :text, placeholder: '您需要登录后才可以评论' %>
+              </p>
+              <p>
+                <%= f.button :submit, '提交' %>
+              </p>
+            </fieldset>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div><!-- bs-tabs -->
+  <!-- -->
+</div>
+<div class="col-md-4 spes-one-right">
+  <div class="panel panel-default">
+    <div class="panel-heading">入驻价格</div>
+    <div class="panel-body">
+      <div class="col-md-10 col-md-offset-2">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">¥768</label>
+            <div class="col-sm-8">
+              <select class="form-control">
+                <option>每日</option>
+                <option>每周</option>
+                <option>每月</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><!-- panel panel-default -->
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">站内短信</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">联系房东</button>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">发送预约信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                  <address>
+                    <%= @space.city.content %>
+                    -
+                    <%= @space.address %><br>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                  </address>
+                </div>
+                <div class="form-group">
+                  <%= simple_form_for :message, url: messages_path do |f| %>
+                    <%= f.error_notification %>
+                    <% if user_signed_in? %>
+                      <%= f.hidden_field :send_id, value: current_user.id %>
+                      <%= f.hidden_field :accept_id, value: @space.user_id %>
+                      <%= f.hidden_field :space_id, value: @space.id %>
+                      <div class="form-inputs">
+                        <%= f.input :sms, label: '发送短信', as: :text %>
+                      </div>
+                      <div class="form-actions">
+                        <%= f.button :submit, '发送' %>
+                      </div>
+                    <% else %>
+                      <fieldset disabled>
+                        <div class="form-inputs">
+                          <%= f.input :sms, label: '发送短信', as: :text, placeholder: '您需要登录后才可以发送' %>
+                        </div>
+                        <div class="form-actions">
+                          <%= f.button :submit, '发送' %>
+                        </div>
+                      </fieldset>
+                    <% end %>
+                  <% end %>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    </div><!-- panel-body -->
+  </div><!-- panel panel-default -->
+
+</div><!-- col-md-4 spes-one-right -->
+</div>
+
+
+
+<!--<p>-->
+  <!--<strong>Title:</strong>-->
+  <!--<%#= @space.title %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Content:</strong>-->
+  <!--<%#= @space.content %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Space setting:</strong>-->
+  <!--<%#= @space.space_setting_id %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>User group:</strong>-->
+  <!--<%#= @space.user_groups.map(&:content).join(",") %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Atmosphere:</strong>-->
+  <!--<%#= @space.atmosphere_id %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Rent_env:</strong>-->
+  <!--<%#= @space.rent_envs.map(&:content).join(",") %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>People:</strong>-->
+  <!--<%#= @space.num_of_people_id %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>City:</strong>-->
+  <!--<%#= @space.city_id %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Address:</strong>-->
+  <!--<%#= @space.address %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Price hour:</strong>-->
+  <!--<%#= @space.price_hour %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Price day:</strong>-->
+  <!--<%#= @space.price_day %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Price month:</strong>-->
+  <!--<%#= @space.price_month %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Price year:</strong>-->
+  <!--<%#= @space.price_year %>-->
+<!--</p>-->
 
 <%= link_to 'Edit', edit_space_path(@space) %> |
 <%= link_to 'Back', spaces_path %>

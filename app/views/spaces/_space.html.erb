@@ -1,0 +1,16 @@
+<div class="col-md-3">
+  <div class="thumbnail">
+    <% if space.photos.empty? %>
+      <%= image_tag '/assets/list1.jpg', class: 'index-photo' %>
+    <% else %>
+      <%= image_tag space.photos.first.data.url(:thumb), class: 'index-photo' %>
+    <% end %>
+    <%#= image_tag '/assets/list1.jpg' %>
+    <div class="caption">
+      <h5><%= link_to space.title, space %></h5>
+      <p><%= space.space_setting.content %> | <%= space.city.content %> <strong class="text-right"><%= space.price_month %>每月</strong></p>
+    </div>
+  </div>
+</div>
+
+

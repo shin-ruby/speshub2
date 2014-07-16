@@ -10,6 +10,7 @@
 #  data_file_size    :integer
 #  data_updated_at   :datetime
 #  space_id          :integer
+#  space_token       :string(255)
 #
 
 require 'spec_helper'

@@ -3,7 +3,400 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
+/*
+ * basic setting
+ */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
-  min-height: 2000px;
+  margin-bottom: 60px;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+.files .progress {
+  width: 100px;
+}
+
+.img-update {
+  max-height: 80px;
+  max-width: 80px;
+}
+
+.help-block {
+  font-size: 12px;
+  margin-bottom: 0px;
+  color: #5BC0DE;
+}
+.alert-dismissible {
+  margin-left: 20px;
+}
+
+.alert-dismissible .close {
+  margin-top: -4px;
+}
+
+
+//header
+
+.navbar-brand {
+  float: left;
+  height: 30px;
+  padding: 10px 30px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.navbar-default {
+  background-color: #ffffff;
+}
+
+.navbar-brand img {
+  height: 30px;
+  width: 102px;
+}
+
+.navbar-centre {
+  margin-left: 300px;
+}
+.search {
+  margin-top: 10px;
+  #search {
+    padding-right: 0px;
+  }
+  button {
+    height: 30px;
+  }
+}
+.user-photo{
+  width: 20px;
+  height: 20px;
+  margin-top: 14px;
+}
+//footer
+
+#footer {
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  /* background-color: #f5f5f5; */
+  background-color: #ffffff;
+  font-size: 10px;
+}
+
+#footer > .container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 14px;
+}
+#footer > .container .text-muted {
+  margin: 16px 0;
+}
+
+#footer a {
+  color: #555;
+}
+
+#footer a:hover {
+  color: #222;
+}
+
+#footer ul {
+  list-style: none;
+}
+
+#footer ul li {
+  float: left;
+  margin-left: 40px;
+}
+
+/*
+ * welcome page
+ */
+
+.banner {
+  margin-top: 50px;
+}
+
+.body-container {
   padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.slogan {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #7F0019;
+}
+
+.banner .container-text {
+  width: 200px;
+  padding: 12px 12px 1px 14px;
+  margin-left: 1100px;
+  background-color :#000000;
+  /* for IE */
+  filter:alpha(opacity=60);
+  /* CSS3 standard */
+  opacity:0.6;
+}
+
+.banner .container-text > p {
+  color:#CCC;
+  font-size:12px;
+}
+
+/* second-subject */
+.second-subject {
+  margin-top: 40px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  background-color: #F1F1F1;
+  text-align: center;
+}
+
+.second-subject .glyphicon {
+  font-size: 64px;
+  color: #A2A2A2;
+}
+
+.second-subject .btn {
+  margin-top: 20px;
+}
+
+.third-subject {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.third-subject img {
+  border-radius:50px;
+}
+
+.recommend img {
+  max-width: 96px;
+}
+
+
+/*
+ * spaces index
+ */
+
+.list-spes {
+  margin-top: 20px;
+}
+
+.sidebar-list {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar-list {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #FFFFFF;
+    border-right: 1px solid #eee;
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.main {
+  margin-top: 30px;
+}
+
+.thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.428571429;
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-size: 12px;
+}
+
+.thumbnail .caption {
+  padding: 4px;
+  color: #333333;
+  h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+  p {
+    margin: 0 0 4px;
+  }
+}
+
+.index-photo {
+  min-height: 166px;
+}
+
+.space-index-pagination {
+  margin-left: 15px;
+}
+
+/* Sidebar navigation */
+
+
+
+
+/* Padding?
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.container-fluid {
+  padding-top: 50px;
+}
+
+
+/*
+ * spaces new
+ */
+
+.spaces_new {
+  margin-top: 30px;
+}
+
+.spaces_new_right .page-header {
+  margin-top: 22px;
+}
+
+.page-header-one {
+  margin-top: -4px;
+}
+
+/*
+ * spaces show
+ */
+.bs-tabs {
+  border-width: 1px;
+  border-radius: 4px 4px 0 0;
+  box-shadow: none;
+  padding: 10px 14px 14px;
+
+  border-style: solid;
+  /* box-shadow: inset 0 3px 6px rgba(0,0,0,.05); */
+  border-color: #e5e5e5 #eee #eee;
+}
+
+.bs-tabs > .tab-content > .tab-pane {
+  margin-top: 10px;
+}
+.media > .pull-left {
+  margin-right: 24px;
+}
+
+.media > .row > .col-md-1 {
+  padding-left: 16px;
+}
+
+.media > .row > .col-md-10 > .media-body {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ddd;
+  border-radius: 4px 4px 4px 4px;
+  padding: 12px 4px 12px 20px;
+  background-color: #F7F7F7;
+  margin-left: 20px;
+}
+.panel-body {
+  text-align:left;
+}
+
+.spes-one-right {
+  margin-top: 57px;
+}
+
+.media-object {
+  height: 50px;
+  width: 50px;
+}
+
+.comment-name {
+  margin-left: 8px;
+}
+
+.detailed-frame {
+  margin-bottom: 6px;
+}
+
+/*
+ * spaces edit
+ */
+
+.table-edit-photo {
+  width: 500px;
+  margin-left: 180px;
+}
+
+/*
+ * search show
+ */
+
+.search-list {
+  margin-left: 180px;
+}
+
+
+/*
+ * sign-in & sign-up
+ */
+
+.sign {
+  margin-top: 60px;
+}
+
+.boolean .optional .input-left {
+  margin-right: 4px;
+}
+
+.sign > .panel-body {
+  padding: 40px 120px 40px 120px;
+}
+
+/*
+ * user_infos
+ */
+
+.user-info-show-left {
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 10px;
+  img {
+    max-width: 70px;
+  }
+}
+
+.user-info-show > .tab-content {
+  margin-top: 18px;
+}
+
+.user-info-show > .tab-content img {
+  max-width: 100px;
+  margin-right: 20px;
 }

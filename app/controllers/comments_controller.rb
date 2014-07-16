@@ -5,8 +5,8 @@ class CommentsController < ApplicationController
     @comment = @space.comments.build(comment_params)
     @comment.user = current_user
     @comment.save
-    redirect_to space_path(@space)
 
+    redirect_to space_path(@space)
   end
 
   private

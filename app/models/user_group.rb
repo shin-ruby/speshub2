@@ -10,5 +10,5 @@
 
 class UserGroup < ActiveRecord::Base
 
-  has_many :spaces, dependent: :destroy
+  has_and_belongs_to_many :spaces
 end

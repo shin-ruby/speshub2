@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default sign">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">帐户登录</h3>
+      </div>
+      <div class="panel-body">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <% flash.each do |key, value| %>
+            <%= content_tag :div, value, :class => "alert alert-danger" unless value.blank? %>
+          <% end %>
+
+          <div class="form-inputs">
+            <%= f.input :email, label: '邮件地址', required: true, autofocus: true %>
+            <%= f.input :password, label: '密码', required: true %>
+            <%= f.input :remember_me, label: '记住登录状态', as: :boolean, wrapper: :vertical_radio_and_checkboxes,
+                        input_html: { class: 'input-left' } if devise_mapping.rememberable? %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "登录", class: 'btn btn-primary' %>
+          </div>
+          <hr />
+          <%= render "devise/shared/links" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

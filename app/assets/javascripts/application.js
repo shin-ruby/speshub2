@@ -14,5 +14,12 @@
 //= require jquery_ujs
 // Loads all Bootstrap javascripts
 //= require bootstrap
+//= require jquery-fileupload
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $('.banner-category-small').mouseenter(function(){
+
+  });
+});
