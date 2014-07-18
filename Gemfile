@@ -50,7 +50,7 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'bcrypt-ruby', '3.0.1'
 
 group :production do
-  gem 'pg', '0.17.1'
+  gem 'sqlite3'
 end
 
 # Use ActiveModel has_secure_password

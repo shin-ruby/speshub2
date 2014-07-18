@@ -3,4 +3,7 @@
   <data-source source="LOCAL" name="Rails speshub2: development" uuid="3f0dabc6-072c-4419-b1aa-7c8ae8d6c3fd">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails speshub2: production" uuid="4e86a7dd-5ba7-48e7-9e82-a10d7a4bf3e3">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
