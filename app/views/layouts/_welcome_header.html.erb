@@ -10,14 +10,6 @@
       <%= link_to image_tag("logo2.png"), root_path, class: "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse">
-      <div class="col-lg-3 search">
-        <div class="input-group">
-          <input type="text" class="form-control input-sm" placeholder="搜索工作空间">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" id="search"></span></button>
-          </span>
-        </div>
-      </div>
       <ul class="nav navbar-nav">
         <li><%= link_to '寻找好的办公空间', spaces_path %></li>
       </ul>
@@ -46,8 +38,8 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "注册", new_user_registration_path %></li>
+          <li><%= link_to "登录", new_user_session_path %></li>
         <% end %>
         <li><%= link_to '发布办公空间', new_space_path %></li>
       </ul>

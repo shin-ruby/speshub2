@@ -10,8 +10,22 @@
     <h5><small>电话：</small><%= @user_info.phone %></h5>
     <h5><small>邮箱：</small><%= User.find_by(id: @user_info.user_id).email %></h5>
     <h5><small>创建时间：</small><%= User.find_by(id: @user_info.user_id).created_at %></h5>
-    <h5><small>个人签名：</small></h5><p class="text-lowercase">我是一名程序员</p>
-    <h5><small>个人介绍：</small></h5><p class="text-lowercase">Speshub创始人Speshub创始人Speshub创始人</p>
+    <h5><small>个人签名：</small></h5>
+      <p class="text-lowercase">
+        <% if @user_info.signature.nil? %>
+          暂无个人签名
+        <% else %>
+          <%= @user_info.signature %>
+        <% end %>
+      </p>
+    <h5><small>个人介绍：</small></h5>
+      <p class="text-lowercase">
+        <% if @user_info.introduce.nil? %>
+          暂无个人介绍
+        <% else %>
+          <%= @user_info.introduce %>
+        <% end %>
+      </p>
     <%= link_to '更新信息', edit_user_info_path(@user_info) %> |
     <%= link_to 'Back', user_infos_path %>
 
@@ -27,11 +41,15 @@
     <!-- Tab panes -->
     <div class="tab-content">
       <div class="tab-pane active" id="home">
-        <% Space.where(user_id: @user_info.user_id).each do |s| %>
-          <%= image_tag s.photos.first.data.url(:thumb) %>
+        <% unless Space.where(user_id: @user_info.user_id).empty? %>
+          <% Space.where(user_id: @user_info.user_id).each do |s| %>
+            <%= image_tag s.photos.first.data.url(:thumb) %>
             <%= link_to s.title, space_path(s) %> | <%= link_to '修改', edit_space_path(s) %>
-          <hr />
-          <!--代码应该有问题，不是current_user-->
+            <hr />
+            <!--代码应该有问题，不是current_user-->
+          <% end %>
+        <% else %>
+          <p>无发布房源信息</p>
         <% end %>
       </div>
       <div class="tab-pane" id="profile">

@@ -1,31 +1,30 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-
+    <h2>修改密码 <%#= resource_name.to_s.humanize %></h2>
+    <br>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :multipart => true }) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :email, label: '邮箱', required: true, autofocus: true %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
 
-        <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-        <%= f.input :password_confirmation, required: false %>
-        <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+        <%= f.input :password, label: '新密码', autocomplete: "off", hint: "如果你不想改变当前密码，此处空白。", required: false %>
+        <%= f.input :password_confirmation, label: '重复新密码', required: false %>
+        <%= f.input :current_password, label: '当前密码', hint: "我们需要您的当前密码确认您的更改", required: true %>
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Update" %>
+        <%= f.button :submit, "更新" %>
       </div>
     <% end %>
 
-    <h3>Cancel my account</h3>
+    <h3>删除我的账户</h3>
 
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p>永久删除我的所有信息? <%= link_to "删除我的账户", registration_path(resource_name), data: { confirm: "确认删除?" }, method: :delete %></p>
 
     <%= link_to "Back", :back %>
 

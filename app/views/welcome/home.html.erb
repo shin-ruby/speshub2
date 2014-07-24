@@ -1,27 +1,46 @@
+<%= render 'layouts/welcome_header' %>
 <%= render "layouts/banner" %>
 <div class="container banner-category">
   <h2 class="text-center slogan">这里为您提供高效和专注的工作环境</h2>
   <div class="row">
-    <div class="col-md-4 banner-category-small">
-      <img src="/assets/design.jpg" alt="..." class="img-thumbnail">
+    <div class="col-md-4">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/design.jpg)">
+        <span>设计师空间</span>
+        <a href="#" class="now">&nbsp;</a>
+      </div>
     </div>
     <div class="col-md-4">
-      <img src="/assets/talk.jpg" alt="..." class="img-thumbnail">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/event.jpg)">
+        <span>程序员的空间</span>
+        <a href="#" class="now">&nbsp;</a>
+      </div>
     </div>
     <div class="col-md-4">
-      <img src="/assets/quiet.jpg" alt="..." class="img-thumbnail">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/talk.jpg)">
+        <span>商务空间</span>
+        <a href="#" class="now">&nbsp;</a>
+      </div>
     </div>
   </div>
   <br /><br />
   <div class="row">
     <div class="col-md-4">
-      <img src="/assets/music.jpg" alt="..." class="img-thumbnail">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/quiet.jpg)">
+        <span>共用空间</span>
+        <a href="#" class="now">&nbsp;</a>
+      </div>
     </div>
     <div class="col-md-4">
-      <img src="/assets/event.jpg" alt="..." class="img-thumbnail">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/music.jpg)">
+        <span>艺术空间</span>
+        <a href="#" class="now">&nbsp;</a>
+      </div>
     </div>
     <div class="col-md-4">
-      <img src="/assets/zone.jpg" alt="..." class="img-thumbnail">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/zone.jpg)">
+        <span>其他空间</span>
+        <a href="#" class="now">&nbsp;</a>
+      </div>
     </div>
   </div>
 </div> <!-- /container -->
@@ -86,3 +105,4 @@
   </div>
 </div>
 </div>
+<%= render 'layouts/footer' %>

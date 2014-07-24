@@ -72,7 +72,7 @@ class UserInfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_info_params
-      params.require(:user_info).permit(:name, :phone, :avatar)
+      params.require(:user_info).permit(:name, :phone, :avatar, :signature, :introduce)
     end
 
     def correct_user

@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -7,14 +7,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <%= link_to image_tag("logo2.png"), root_path, class: "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse">
+      <div class="col-lg-3 search">
+        <div class="input-group">
+          <input type="text" class="form-control input-sm" placeholder="搜索工作空间">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" id="search"></span></button>
+          </span>
+        </div>
+      </div>
       <ul class="nav navbar-nav">
-        <li><%= link_to '首页', root_path %></li>
         <li><%= link_to '寻找好的办公空间', spaces_path %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-centre">
-        <%= link_to image_tag("logo.png"), root_path, class: "navbar-brand" %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
