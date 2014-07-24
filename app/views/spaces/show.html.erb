@@ -43,17 +43,17 @@
   <!-- -->
   <div class="bs-tabs">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#home" data-toggle="tab">描述</a></li>
-      <li><a href="#profile" data-toggle="tab">设施</a></li>
-      <li><a href="#messages" data-toggle="tab">地址</a></li>
+      <li class="active"><a href="#describe" data-toggle="tab">描述</a></li>
+      <li><a href="#facility" data-toggle="tab">便利设施</a></li>
+      <li><a href="#price" data-toggle="tab">价格</a></li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div class="tab-pane active" id="home">
+      <div class="tab-pane active" id="describe">
         <p><%= @space.content %></p>
       </div>
-      <div class="tab-pane" id="profile">
+      <div class="tab-pane" id="facility">
         <div class="row">
           <div class="col-md-10">
 
@@ -70,45 +70,47 @@
 
         </div>
       </div>
-      <div class="tab-pane" id="messages">
-        <table class="table">
+      <div class="tab-pane" id="price">
+        <table class="table table-hover">
           <thead>
           <tr>
-            <th>#</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
+            <th>时间</th>
+            <th>价格</th>
+            <th>单位</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td>1,001</td>
-            <td>Lorem</td>
-            <td>ipsum</td>
-            <td>dolor</td>
-            <td>sit</td>
+            <td>小时</td>
+            <td>
+              <% if @space.price_hour.nil? %>
+                不支持按小时计费
+              <% else %>
+                <%= @space.price_hour %>
+              <% end %>
+            </td>
+            <td>人／位</td>
           </tr>
           <tr>
-            <td>1,002</td>
-            <td>amet</td>
-            <td>consectetur</td>
-            <td>adipiscing</td>
-            <td>elit</td>
+            <td>天</td>
+            <td>
+              <% if @space.price_day.nil? %>
+                不支持按天计费
+              <% else %>
+                <%= @space.price_day %>
+              <% end %>
+            </td>
+            <td>人／位</td>
           </tr>
           <tr>
-            <td>1,003</td>
-            <td>Integer</td>
-            <td>nec</td>
-            <td>odio</td>
-            <td>Praesent</td>
+            <td>月</td>
+            <td><%= @space.price_month %></td>
+            <td>人／位</td>
           </tr>
           <tr>
-            <td>1,003</td>
-            <td>libero</td>
-            <td>Sed</td>
-            <td>cursus</td>
-            <td>ante</td>
+            <td>年</td>
+            <td><%= @space.price_year %></td>
+            <td>人／位</td>
           </tr>
           </tbody>
         </table>
@@ -179,25 +181,25 @@
   <!-- -->
 </div>
 <div class="col-md-4 spes-one-right">
-  <div class="panel panel-default">
-    <div class="panel-heading">入驻价格</div>
-    <div class="panel-body">
-      <div class="col-md-10 col-md-offset-2">
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <label for="inputPassword" class="col-sm-2 control-label">¥768</label>
-            <div class="col-sm-8">
-              <select class="form-control">
-                <option>每日</option>
-                <option>每周</option>
-                <option>每月</option>
-              </select>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div><!-- panel panel-default -->
+  <!--<div class="panel panel-default">-->
+    <!--<div class="panel-heading">入驻价格</div>-->
+    <!--<div class="panel-body">-->
+      <!--<div class="col-md-10 col-md-offset-2">-->
+        <!--<form class="form-horizontal" role="form">-->
+          <!--<div class="form-group">-->
+            <!--<label for="inputPassword" class="col-sm-2 control-label">¥768</label>-->
+            <!--<div class="col-sm-8">-->
+              <!--<select class="form-control">-->
+                <!--<option>每日</option>-->
+                <!--<option>每周</option>-->
+                <!--<option>每月</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>&lt;!&ndash; panel panel-default &ndash;&gt;-->
 
   <div class="panel panel-default">
     <div class="panel-heading">

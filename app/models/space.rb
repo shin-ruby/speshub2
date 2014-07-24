@@ -43,11 +43,11 @@ class Space < ActiveRecord::Base
 
 
   validates :title, :address, :content, presence: true
-  #validates :content, length: { minimum: 20 }
+  validates :content, length: { minimum: 20 }
   validates :title, :uniqueness => true
-  #validates :space_setting_id, presence: true
+  validates :space_setting_id, presence: true
 
-  #validates :price_hour, :price_day, :price_month, :price_year, :numericality => { :greater_than_or_equal_to => 0.01}
+  validates :price_month, :price_year, :numericality => { :greater_than_or_equal_to => 0.01}
   validates :price_hour, :price_day, :price_month, :price_year, presence: true
 
 

@@ -36,8 +36,10 @@
           <div class="page-header">
             <h4><span class="glyphicon glyphicon-usd"></span>  价格 <small>第四步／六步</small></h4>
           </div>
-          <%= f.input :price_hour, label: '小时／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'} %>
-          <%= f.input :price_day, label: '每日／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'} %>
+          <%= f.input :price_hour, label: '小时／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'},
+                      hint: '*无输入小时价格，表示不支持按小时计费' %>
+          <%= f.input :price_day, label: '每天／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'},
+                      hint: '*无输入天价格，表示不支持按天计费' %>
           <%= f.input :price_month, label: '每月／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'} %>
           <%= f.input :price_year, label: '全年／人',  wrapper_html: { class: 'form-horizontal' }, input_html: {style: 'width: 200px'} %>
           <div class="page-header">

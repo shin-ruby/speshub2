@@ -5,9 +5,7 @@ class UserInfosController < ApplicationController
 
   # GET /user_infos
   # GET /user_infos.json
-  def index
-    @user_infos = UserInfo.all
-  end
+
 
   # GET /user_infos/1
   # GET /user_infos/1.json
