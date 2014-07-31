@@ -50,6 +50,8 @@ class Space < ActiveRecord::Base
   validates :price_month, :price_year, :numericality => { :greater_than_or_equal_to => 0.01}
   validates :price_hour, :price_day, :price_month, :price_year, presence: true
 
+  #will_paginate
+  self.per_page = 32
 
   def generate_token
     self.token = loop do

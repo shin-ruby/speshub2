@@ -6,7 +6,9 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
+    #@spaces = Space.all
+    @spaces = Space.paginate(page: params[:page])
+
     #Padding code
     @current_user_spaces = current_user.spaces if user_signed_in?
 

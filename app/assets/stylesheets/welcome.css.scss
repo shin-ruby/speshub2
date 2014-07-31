@@ -10,6 +10,7 @@
 html {
   position: relative;
   min-height: 100%;
+  font-family:Helvetica,Tahoma,Arial,STXihei,"华文细黑","MicrosoftYaHei","微软雅黑",SimSun,"宋体",Heiti,"黑体",sans-serif;
 }
 
 body {
@@ -41,6 +42,12 @@ p {
 
 .alert-dismissible .close {
   margin-top: -4px;
+}
+
+.alert-notice {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
 }
 
 
@@ -75,10 +82,14 @@ p {
     height: 30px;
   }
 }
-.user-photo{
+.user-photo {
   width: 20px;
   height: 20px;
   margin-top: 14px;
+}
+
+.header-button {
+  margin-top: 8px;
 }
 //footer
 
@@ -124,6 +135,10 @@ p {
 /*
  * welcome page
  */
+
+.welcome_flash {
+  height: 1px;
+}
 
 .banner {
   margin-top: 50px;
@@ -393,7 +408,7 @@ p {
 }
 
 #price {
-  width: 400px;
+  width: 460px;
 }
 
 /*

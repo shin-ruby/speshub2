@@ -1,24 +1,31 @@
 <%= render 'layouts/welcome_header' %>
+
+<div class="welcome_flash">
+  <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: name%>
+  <% end -%>
+</div>
+
 <%= render "layouts/banner" %>
 <div class="container banner-category">
   <h2 class="text-center slogan">这里为您提供高效和专注的工作环境</h2>
   <div class="row">
     <div class="col-md-4">
-      <div class="img-thumbnail" alt="..." style="background: url(/assets/design.jpg)">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/design-2.jpg)">
         <span>设计师空间</span>
-        <a href="#" class="now">&nbsp;</a>
+        <%= link_to "", design_path, class: "now" %>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="img-thumbnail" alt="..." style="background: url(/assets/event.jpg)">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/event-3.jpg)">
         <span>程序员的空间</span>
-        <a href="#" class="now">&nbsp;</a>
+        <%= link_to "", coder_path, class: "now" %>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="img-thumbnail" alt="..." style="background: url(/assets/talk.jpg)">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/event-2.jpg)">
         <span>商务空间</span>
-        <a href="#" class="now">&nbsp;</a>
+        <%= link_to "", business_path, class: "now" %>
       </div>
     </div>
   </div>
@@ -27,19 +34,19 @@
     <div class="col-md-4">
       <div class="img-thumbnail" alt="..." style="background: url(/assets/quiet.jpg)">
         <span>共用空间</span>
-        <a href="#" class="now">&nbsp;</a>
+        <%= link_to "", share_path, class: "now" %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="img-thumbnail" alt="..." style="background: url(/assets/music.jpg)">
         <span>艺术空间</span>
-        <a href="#" class="now">&nbsp;</a>
+        <%= link_to "", art_path, class: "now" %>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="img-thumbnail" alt="..." style="background: url(/assets/zone.jpg)">
+      <div class="img-thumbnail" alt="..." style="background: url(/assets/quiet-2.jpg)">
         <span>其他空间</span>
-        <a href="#" class="now">&nbsp;</a>
+        <%= link_to "", other_path, class: "now" %>
       </div>
     </div>
   </div>
@@ -52,19 +59,19 @@
         <span class="glyphicon glyphicon-send"></span>
         <h4><strong>创业者</strong></h4>
         <p>无论你现实是一名创业者，还是自由职业人，寻找办公空间就应该是这么简单。</p>
-        <p><a class="btn btn-info" href="#">寻找适合你的工作环境 &raquo;</a></p>
+        <p><%= link_to "寻找适合你的工作环境", establish_path, class: "btn btn-info" %></p>
       </div>
       <div class="col-md-4">
         <span class="glyphicon glyphicon-fire"></span>
         <h4><strong>出租</strong></h4>
-        <p>将办公空间合理出租，选择适合的入驻用户，打造一个有文化的环境。 </p>
-        <p><a class="btn btn-info" href="#">了解更多出租事宜 &raquo;</a></p>
+        <p>将办公空间合理出租，选择适合的入驻用户，打造独有的工作氛围。 </p>
+        <p><%= link_to "如何发布办公空间信息", lease_path, class: "btn btn-info" %></p>
       </div>
       <div class="col-md-4">
         <span class="glyphicon glyphicon-leaf"></span>
         <h4><strong>活动</strong></h4>
-        <p>本期主题─《创业公司的后端实践》2014年9月25日晚上7点半，上海五角场创智天地.</p>
-        <p><a class="btn btn-info" href="#">了解活动 &raquo;</a></p>
+        <p>本期活动主题：《七周七语言之 Ruby》－ 2014年8月16日晚上7点半，上海五角场创智天地.</p>
+        <p><%= link_to "空间活动信息", "#", class: "btn btn-info" %></p>
       </div>
     </div>
   </div><!--end container -->

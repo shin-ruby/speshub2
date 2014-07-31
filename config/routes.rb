@@ -15,6 +15,15 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/home'
   get 'about', to: 'welcome#about'
+  get 'design', to: 'welcome#design'
+  get 'coder', to: 'welcome#coder'
+  get 'business', to: 'welcome#business'
+  get 'art', to: 'welcome#art'
+  get 'other', to: 'welcome#other'
+  get 'share', to: 'welcome#share'
+  get 'establish', to: 'welcome#establish'
+  get 'lease', to: 'welcome#lease'
+  get 'event', to: 'welcome#event'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

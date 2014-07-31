@@ -1,0 +1,58 @@
+<%= render 'layouts/welcome_header' %>
+
+<div class="banner">
+  <!-- Carousel
+  ================================================== -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="/assets/s-banner.png" alt="Banner">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>设计师的空间</h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.carousel -->
+</div>
+
+<div class="container">
+  <h2 class="text-center">这里为您提供与设计师们在一起的工作空间</h2>
+  <br>
+  <p>
+    艺术/设计行业的人员整体偏感性，比较在意生活质量和工作环境（比如干净宽敞的空间，完善的设备等），因为生活是设计灵感的来源，
+    因此一个好的工作环境会更容易让设计师产生好的创意，当然也就更能吸引TA的加入。
+  </p>
+  <hr>
+
+  <div class="main main-list tab-content">
+    <div class="row placeholders">
+      <% @spaces.each do |space| %>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <% if space.photos.empty? %>
+              <%= image_tag '/assets/list1.jpg', class: 'index-photo' %>
+            <% else %>
+              <%= image_tag space.photos.first.data.url(:thumb), class: 'index-photo' %>
+            <% end %>
+            <%#= image_tag '/assets/list1.jpg' %>
+            <div class="caption">
+              <h5><%= link_to space.title, space %></h5>
+              <p><%= space.space_setting.content %> | <%= space.city.content %> <strong class="text-right"><%= space.price_month %>每月</strong></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <p class="text-center"><%= link_to "查找更多空间", spaces_path, class: "btn btn-primary" %></p>
+
+</div> <!-- /container -->
+
+
+<%= render 'layouts/footer' %>
