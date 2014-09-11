@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4 user-info-show-left">
-    <% if @user_info.avatar_file_name.empty? %>
+    <% if @user_info.avatar_file_name.nil? %>
       <%= image_tag "user_pic.jpg", class: "user-photo" %>
     <% else %>
       <%= image_tag @user_info.avatar.url(:medium) %>
@@ -51,13 +51,23 @@
         <% end %>
       </div>
       <div class="tab-pane" id="profile">
-        <% Comment.where(user_id: @user_info.user_id).each do |c| %>
-          <%= c.commenter %><hr />
+        <% unless Comment.where(user_id: @user_info.user_id).empty? %>
+          <% Comment.where(user_id: @user_info.user_id).each do |c| %>
+            <%= c.commenter %><hr />
+          <% end %>
+        <% else %>
+          <p>无最近回帖</p>
         <% end %>
+
       </div>
       <div class="tab-pane" id="messages">
-        123
-        <hr />
+        <% unless Message.where(accept_id: current_user).empty? %>
+          <% Message.where(accept_id: current_user).each do |a| %>
+            <%= link_to user_info_name(a).name, user_info_path(user_info_name(a).id) %>:<%= a.sms %> <hr />
+          <% end %>
+        <% else %>
+          <p>无短信</p>
+        <% end %>
       </div>
     </div>
 

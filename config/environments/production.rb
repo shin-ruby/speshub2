@@ -14,6 +14,19 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => "wwww.speshub.com" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.163.com",
+      :port => 25,
+      :domain => "163.com",
+      :authentication => :login,
+      :user_name => "rails001@163.com", #你的邮箱
+      :password => "ps2ps2ps2" #你的密码
+  }
+
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.

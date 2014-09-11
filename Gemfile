@@ -49,7 +49,9 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 
 gem 'bcrypt-ruby', '3.0.1'
 
-gem 'will_paginate', '3.0.7'
+#gem 'will_paginate', '3.0.7'
+gem "will_paginate", ">=3.0.pre2"
+
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 
 group :production do

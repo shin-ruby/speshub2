@@ -19,7 +19,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
-            <% if current_user_info.nil? %>
+            <% if current_user_info_photo? %>
               <%= image_tag "user_pic.jpg", class: "user-photo" %>
             <% else %>
               <%= image_tag current_user_info.avatar.url(:thumb), class: "user-photo" %>

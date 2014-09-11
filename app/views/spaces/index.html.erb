@@ -15,7 +15,7 @@
                 <%= image_tag space.photos.first.data.url(:thumb), class: 'index-photo' %>
               <% end %>
               <%#= image_tag '/assets/list1.jpg' %>
-              <div class="caption">
+              <div class="caption" data-no-turbolink>
                 <h5><%= link_to space.title, space %></h5>
                 <p><%= space.space_setting.content %> | <%= space.city.content %> <strong class="text-right"><%= space.price_month %>每月</strong></p>
               </div>
