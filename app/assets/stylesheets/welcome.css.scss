@@ -249,6 +249,12 @@ p {
   font-size: 20px;
 }
 
+.flash_alert {
+  position:absolute;
+  width: 500px;
+  margin-top: -300px;
+  margin-left: 120px;
+}
 /*
  * spaces index
  */
@@ -481,4 +487,5 @@ p {
   font-size: 22px;
   font-family: Helvetica,Tahoma,Arial,STXihei,"华文细黑","MicrosoftYaHei","微软雅黑",SimSun,"宋体",Heiti,"黑体",sans-serif;
 }
+
 

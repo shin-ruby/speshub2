@@ -16,3 +16,4 @@
 //= require jquery-fileupload
 //= require turbolinks
 //= require_tree .
+

@@ -1,14 +1,19 @@
 <%= render 'layouts/welcome_header' %>
 
-<div class="welcome_flash">
-  <% flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, class: name%>
-  <% end -%>
-</div>
-
 <%= render "layouts/banner" %>
+
+<% unless flash.blank? %>
+  <div class="alert alert-warning alert-dismissible flash_alert" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name%>
+    <% end -%>
+  </div>
+<% end %>
+
 <div class="container banner-category">
   <h2 class="text-center slogan">这里为您提供高效和专注的工作环境</h2>
+
   <div class="row">
     <div class="col-md-4">
       <div class="img-thumbnail" alt="..." style="background: url(/assets/design-2.jpg)">
