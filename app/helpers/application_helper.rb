@@ -7,7 +7,9 @@ private
   end
 
   def current_user_info_photo?
-    UserInfo.find_by(user_id: current_user.id) == nil
+    info_photo = UserInfo.find_by(user_id: current_user.id)
+
+    info_photo.nil? || info_photo.avatar_file_name.blank?
   end
 
   def comment_user_info(comment)

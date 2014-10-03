@@ -1,28 +1,20 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails training works, Continue to spend five months of weekends.
 
-Things you may want to cover:
+I learned:
 
-* Ruby version
+* How to use Ruby on Rails.
 
-* System dependencies
+* Use some of the Gems: Devise, Paperclip, jQuery-fileupload-rails, Pry, etc.
 
-* Configuration
+* Deployment
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* How to use jQuery and Ajax on the rails framework.
 
 * ...
 
+This process is difficult but also very interesting, I love design products and coding.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This is my first publish although there are some bug but I will not update this, just as an exercise.
+

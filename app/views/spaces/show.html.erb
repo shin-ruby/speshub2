@@ -158,12 +158,23 @@
 
         <%= simple_form_for([@space, @space.comments.build]) do |f| %>
           <% if user_signed_in? %>
-            <p>
-              <%= f.input :commenter, label: '我要评论', as: :text %>
-            </p>
-            <p>
-              <%= f.button :submit, '提交' %>
-            </p>
+            <% if current_user_info_photo? %>
+              <fieldset disabled>
+              <p>
+                <%= f.input :commenter, as: :text, placeholder: '您需要填写完个人信息后才可以发送' %>
+              </p>
+              <p>
+                <%= f.button :submit, '提交' %>
+              </p>
+              </fieldset>
+            <% else %>
+              <p>
+                <%= f.input :commenter, label: '我要评论', as: :text %>
+              </p>
+              <p>
+                <%= f.button :submit, '提交' %>
+              </p>
+            <% end %>
           <% else %>
             <fieldset disabled>
               <p>
